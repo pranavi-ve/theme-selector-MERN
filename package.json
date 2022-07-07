@@ -6,10 +6,15 @@
   "scripts": {
     "dev": "concurrently \"(npm start --prefix client)\" \"(npm run dev --prefix server)\"",
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "concurrently \"(npm build --prefix client)\" \"(npm install --prefix server)\""
+    "server":"cd server && npm run start && npm run build",
+    "install-client" : "cd client && npm install",
+    "heroku-postbuild": "npm run install-client && npm run build",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^7.2.2"
+  }
 }
