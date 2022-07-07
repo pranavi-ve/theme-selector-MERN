@@ -12,6 +12,11 @@ const port = process.env.PORT || 5000;
 server.use(express.json());
 server.use(express.urlencoded({ extended: true }));
 
+server.use(express.static(path.resolve(__dirname, "./../client/build")));
+server.get("*", function(req, res) {
+  res.sendFile(path.resolve(__dirname, "./../client/build", "index.html"));
+})
+
 server.use("/api/auth", authController);
 server.use("/api/users", authenticate, userController);
 
