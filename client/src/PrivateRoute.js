@@ -1,5 +1,4 @@
-import React, { useContext } from "react";
-import { AuthContext } from "./context/auth.context";
+import React from "react";
 import { Outlet, Navigate } from "react-router-dom";
 import { isAuthenticated } from "./helpers/utils";
 
