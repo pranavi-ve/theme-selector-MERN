@@ -38,7 +38,7 @@ async function register(req, res, next) {
         email: data.email,
       })
     )
-    .then((data) => res.json({ data }))
+    .then((data) => res.json(data ))
     .catch((err) => next(err));
 }
 

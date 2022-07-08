@@ -11,5 +11,3 @@ export const SAVE_PREF_SUCCESS = 'SAVE_PREF_SUCCESS';
 
 export const GET_PREF_FAILED = 'GET_PREF_FAILED';
 export const GET_PREF_SUCCESS = 'GET_PREF_SUCCESS';
-
-export const REDIRECT = 'REDIRECT';

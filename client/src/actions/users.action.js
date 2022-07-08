@@ -1,8 +1,7 @@
 import * as constants from "../helpers/constants";
 import { register, login, savePref, getPref } from "../api/users.api";
 import { toast } from 'react-toastify';
-
-function registerUser(dispatch, user) {
+function registerUser(dispatch, user, navigate) {
   dispatch({ type: constants.REGISTER_REQUEST });
   register(user)
     .then((data) => {
@@ -12,7 +11,9 @@ function registerUser(dispatch, user) {
         return;
       }
       dispatch({ type: constants.REGISTER_SUCCESS });
-      dispatch({type: constants.REDIRECT, payload:"/auth?page=login"});
+      navigate("/auth?page=login",{
+        replace: true,
+      });
       toast("User successfully registered");
     })
     .catch((err) => {
@@ -21,7 +22,7 @@ function registerUser(dispatch, user) {
     });
 }
 
-function loginUser(dispatch, user) {
+function loginUser(dispatch, user, navigate) {
   dispatch({ type: constants.LOGIN_REQUEST });
   login(user)
     .then((data) => {
@@ -31,7 +32,9 @@ function loginUser(dispatch, user) {
         return;
       }
       dispatch({ type: constants.LOGIN_SUCCESS });
-      dispatch({type: constants.REDIRECT, payload:"/"})
+      navigate("/",{
+        replace: true,
+      });
     })
     .catch((err) => {
       toast("Some error occured");

@@ -67,13 +67,13 @@ export const Auth = () => {
   };
 
   const registerApi = () => {
-    registerUser(dispatch, user);
+    registerUser(dispatch, user,navigate);
   };
   const loginApi = () => {
     loginUser(dispatch, {
       username: user.username,
       password: user.password,
-    });
+    },navigate);
   };
 
   useEffect(() => {
@@ -81,7 +81,7 @@ export const Auth = () => {
   }, [page]);
   return (
     <div className="form-wrapper">
-      <form autoValidate onSubmit={handleSubmit} className="login-form" >
+      <form autovalidate onSubmit={handleSubmit} className="login-form" >
         <h2>{isSignUp() ? "Sign Up" : "Log In"}</h2>
         {isSignUp() && (
           <div className="form-group">

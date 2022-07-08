@@ -1,7 +1,7 @@
 export const initialState = {
   loading: false,
   error: null,
-  token: null,
+  token: null
 };
 
 export const AuthReducer = (state = initialState, action) => {
@@ -22,7 +22,7 @@ export const AuthReducer = (state = initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: action.payload.error || action.payload.error.message,
+        error: action.payload.error || action.payload.error?.message,
       };
     case "LOGIN_REQUEST":
       return {
@@ -41,13 +41,6 @@ export const AuthReducer = (state = initialState, action) => {
         ...state,
         loading: false,
         error: action.payload.error,
-      };
-    case "REDIRECT":
-      return {
-        ...state,
-        loading: false,
-        error: null,
-        redirect: action.payload,
       };
     default:
       throw Error("cannot find mentioned type ", action.type);
